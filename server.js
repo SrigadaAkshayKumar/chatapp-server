@@ -22,13 +22,13 @@ const serviceAccount = {
 
 initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://chatapp-9711e-default-rtdb.firebaseio.com",
+  databaseURL: process.env.DATABASE_URL,
 });
 
 const db = getDatabase();
 const app = express();
 const server = http.createServer(app);
-const allowedOrigins = ["https://your-frontend-url.onrender.com"];
+const allowedOrigins = ["https://cipherthread.onrender.com"];
 const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
